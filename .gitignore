@@ -3,4 +3,6 @@
 *.swp
 *~
 
+# Test files
+test-files/
 

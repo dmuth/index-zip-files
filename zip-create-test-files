@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# Create some test zipfiles that we can Index and work with
+#
+
+# Errors are fatal
+set -e
+
+# Change to where our script lives
+pushd $(dirname $0) > /dev/null
+
+echo "# Creating test directory and cleaning it out..."
+mkdir -p test-files
+cd test-files
+rm -rf *
+
+echo "# Creating test zipfiles..."
+FILENO=0
+for I in $(seq -w 10)
+do
+
+	for J in $(seq 5)
+	do
+		FILENO=$(( FILENO+= 1 ))
+		touch file-${FILENO}.txt
+	done
+
+	if test $(( ${FILENO} % 2 )) == 0
+	then
+		touch file-even.txt
+	fi
+
+	zip file-${I} *.txt > /dev/null
+	rm -f *.txt
+
+done
+
+mkdir -p dir-01/dir-02
+mkdir -p dir-03/dir-04/dir-05
+mkdir -p dir-03/dir-04/misc
+
+mv file-01.zip dir-01/
+mv file-02.zip dir-01/dir-02/
+mv file-03.zip dir-03/
+mv file-04.zip dir-03/dir-04/
+mv file-05.zip dir-03/dir-04/dir-05/
+mv file-*.zip dir-03/dir-04/misc/
+
+echo "# ZIP files created with zero byte text files: "
+find . -type f | sort
+
+echo "# Done!"
+
+
