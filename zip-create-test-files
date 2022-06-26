@@ -27,11 +27,13 @@ do
 
 	if test $(( ${FILENO} % 2 )) == 0
 	then
-		touch file-even.txt
+		mkdir -p dir-even
+		touch dir-even/file-even.txt
 	fi
 
-	zip file-${I} *.txt > /dev/null
-	rm -f *.txt
+	zip -r file-${I} * -x *.zip > /dev/null
+	rm -rf *.txt dir-even
+	#unzip -l file-${I} # Debugging
 
 done
 
