@@ -23,7 +23,6 @@ echo "# Index Directory: ${INDEX_DIR}"
 echo "# "
 echo "# Search String: ${SEARCH_STRING}"
 echo "# "
-echo "# "
 
 mkdir -p ${INDEX_DIR}
 
