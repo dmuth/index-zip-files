@@ -1,6 +1,8 @@
 
 # Index ZIP Files
 
+<img src="./img/zip-file-icon.jpg" align="right" />
+
 What this does: Imagine you have hundreds of ZIP files and you want to find a specific file in one of them, without unzipping each file.  This makes that possible.
 
 What this does not do: This does not index the content of each ZIP file.
