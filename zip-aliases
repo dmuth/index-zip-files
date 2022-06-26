@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# Emit aliases that will call the zip utilities for a specific directory.
+#
+
+
+# Errors are fatal
+set -e 
+
+#
+# Change to the location of this script and load our library then go back to where we were.
+#
+pushd $(dirname $0) > /dev/null
+. ./lib/main.sh
+BIN_DIR=${PWD}
+popd > /dev/null
+
+parse_args_aliases $@
+
+echo "# "
+echo "# Generating aliases tied to this installation and source directory"
+echo "# "
+echo "# Source Directory: ${SRC_DIR}"
+echo "# Alias Key: ${ALIAS_KEY}"
+echo "# "
+
+
+echo "alias zip-index-${ALIAS_KEY}=\"${BIN_DIR}/zip-index ${SRC_DIR}\""
+echo "alias zip-list-${ALIAS_KEY}=\"${BIN_DIR}/zip-list ${SRC_DIR}\""
+echo "alias zip-search-${ALIAS_KEY}=\"${BIN_DIR}/zip-search ${SRC_DIR}\""
+

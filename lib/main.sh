@@ -149,3 +149,47 @@ function index_filename_to_zip_filename() {
 } # End of index_filename_to_zip_filename()
 
 
+#
+# Parse our command line arguments.
+#
+function parse_args_aliases() {
+
+	if test ! "$2"
+	then
+		print_syntax_aliases
+	fi
+
+	SRC_DIR=$1
+	SRC_DIR=$(realpath ${SRC_DIR})
+
+	if test ! -d "${SRC_DIR}"
+	then
+		echo "! "
+		echo "! Directory '${SRC_DIR}' doesn't exist."
+		echo "! "
+		exit 1
+	fi
+
+	ALIAS_KEY=$2
+
+} # End of parse_args_aliases()
+
+
+#
+# Print our syntax and exit.
+#
+function print_syntax_aliases() {
+
+	echo "! "
+	echo "! Syntax: $0 SRC_DIR ALIAS_KEY"
+	echo "! "
+	echo "! SRC_DIR - The directory of our ZIP files.  This will affect which Index is searched."
+	echo "! "
+	echo "! ALIAS_KEY - A unique value for this set of aliases."
+	echo "! "
+	echo "! "
+	exit 1
+
+} # End of print_syntax_aliases()
+
+
