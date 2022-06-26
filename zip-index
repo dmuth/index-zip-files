@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# Index ZIP files that haven't been indexed yet (or are out of date).
+#
+
+
+# Errors are fatal
+set -e 
+
+#
+# Change to the location of this script and load our library then go back to where we were.
+#
+pushd $(dirname $0) > /dev/null
+. ./lib/main.sh
+popd > /dev/null
+
+parse_args $@
+
+echo "# "
+echo "# Starting Index run..."
+echo "# "
+echo "# Index Directory: ${INDEX_DIR}"
+echo "# "
+
+#
+# Extract all of our filenames.
+#
+for FILE in $(find . -type f -name *.zip)
+do
+	TARGET=${INDEX_DIR}/$(echo ${FILE} | zip_filename_to_index_filename)
+	#echo ${TARGET} # Debugging
+
+	unzip -Z1 ${FILE} | egrep -v "/$" > ${TARGET}
+
+	echo "# Indexed $(cat ${TARGET} | wc -l | awk '{print $1}' ) filenames from ${FILE}"
+
+done
+
+
+# TODO:
+# - code to check if ZIP file is newer than index file or not
+
+
+
+
