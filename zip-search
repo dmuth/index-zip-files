@@ -38,7 +38,7 @@ do
 	#
 	# Search for the string in each file, and preprend the filename on any matches.
 	#
-	cat ${FILE} | grep "${SEARCH_STRING}" | sed -e "s|^|${FILE2}: |" 
+	cat ${FILE} | grep -i "${SEARCH_STRING}" | sed -e "s|^|${FILE2}: |" 
 
 done
 
