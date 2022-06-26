@@ -3,7 +3,7 @@
 
 What this does: Imagine you have hundreds of ZIP files and you want to find a specific file in one of them, without unzipping each file.  This makes that possible.
 
-What this does not: This does not index the content of each ZIP file.
+What this does not do: This does not index the content of each ZIP file.
 
 
 ## Usage
@@ -38,7 +38,7 @@ alias zip-list-dropbox="/Users/doug/development/index-zip-files/zip-list /Users/
 alias zip-search-dropbox="/Users/doug/development/index-zip-files/zip-search /Users/doug/Dropbox"
 ```
 
-Now typing `zip-index-dropbox` from any directory will index your Dropbox folder's ZIP files, and `zip-search-dropbox` can be used to search it.  And yes, aliases autocomplete in bash. :-)
+Once you paste those three alias lines in shell, typing `zip-index-dropbox` from any directory will index your Dropbox folder's ZIP files, and `zip-search-dropbox` can be used to search it.  And yes, aliases autocomplete in bash. :-)
 
 
 ## Terminology
