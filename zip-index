@@ -22,24 +22,28 @@ echo "# "
 echo "# Index Directory: ${INDEX_DIR}"
 echo "# "
 
+mkdir -p ${INDEX_DIR}
+
 #
 # Extract all of our filenames.
 #
 for FILE in $(find . -type f -name *.zip)
 do
+
 	TARGET=${INDEX_DIR}/$(echo ${FILE} | zip_filename_to_index_filename)
 	#echo ${TARGET} # Debugging
+
+	if test ${TARGET} -nt ${FILE}
+	then
+		echo "# Index for file ${FILE} is newer than that file, skipping..."
+		continue
+	fi
 
 	unzip -Z1 ${FILE} | egrep -v "/$" > ${TARGET}
 
 	echo "# Indexed $(cat ${TARGET} | wc -l | awk '{print $1}' ) filenames from ${FILE}"
 
 done
-
-
-# TODO:
-# - code to check if ZIP file is newer than index file or not
-
 
 
 

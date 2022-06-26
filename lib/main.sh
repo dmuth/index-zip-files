@@ -3,6 +3,13 @@
 #
 
 #
+# Set our Index directory to be under the top-level directory of this app.
+# Note that this file should have been included via a script that had pushd $(dirname $0) in it
+# so that we changed to the directory where these scripts live.
+#
+INDEX_DIR=${PWD}/zip-indexes
+
+#
 # Parse our command line arguments.
 #
 function parse_args() {
@@ -12,12 +19,12 @@ function parse_args() {
 		print_syntax
 	fi
 
-	INDEX_DIR=$1
+	SRC_DIR=$1
 
-	if test ! -d "${INDEX_DIR}"
+	if test ! -d "${SRC_DIR}"
 	then
 		echo "! "
-		echo "! Directory '${INDEX_DIR}' doesn't exist."
+		echo "! Directory '${SRC_DIR}' doesn't exist."
 		echo "! "
 		exit 1
 	fi
@@ -31,9 +38,9 @@ function parse_args() {
 function print_syntax() {
 
 	echo "! "
-	echo "! Syntax: $0 INDEX_DIR"
+	echo "! Syntax: $0 SRC_DIR"
 	echo "! "
-	echo "! INDEX_DIR - The directory of our where our Index should be created/searched."
+	echo "! SRC_DIR - The directory of our where our Index should be created/searched."
 	echo "! "
 	exit 1
 
