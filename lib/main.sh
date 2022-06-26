@@ -3,6 +3,11 @@
 #
 
 #
+# Directory containing ZIP files to Index
+#
+SRC_DIR="" 
+
+#
 # Main directory for our indexes
 # The directory under this one will be specific for what directory was indexed.
 #

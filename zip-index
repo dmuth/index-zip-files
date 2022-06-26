@@ -25,9 +25,17 @@ echo "# "
 mkdir -p ${INDEX_DIR}
 
 #
+# Don't break for loops on spaces, only newlines.
+#
+# Shoutout to https://askubuntu.com/a/344418 for the trick.
+#
+#
+IFS=$'\n'
+
+#
 # Extract all of our filenames.
 #
-for FILE in $(find . -type f -name *.zip)
+for FILE in $(find ${SRC_DIR} -type f -name *.zip)
 do
 
 	TARGET=${INDEX_DIR}/$(echo ${FILE} | zip_filename_to_index_filename)
