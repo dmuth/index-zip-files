@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# Search all Indexed ZIP files for a string in the filename
+#
+
+
+# Errors are fatal
+set -e 
+
+#
+# Change to the location of this script and load our library then go back to where we were.
+#
+pushd $(dirname $0) > /dev/null
+. ./lib/main.sh
+popd > /dev/null
+
+parse_args_search $@
+
+echo "# "
+echo "# Searching all Indexes of ZIP files."
+echo "# "
+echo "# Index Directory: ${INDEX_DIR}"
+echo "# "
+echo "# Search String: ${SEARCH_STRING}"
+echo "# "
+echo "# "
+
+mkdir -p ${INDEX_DIR}
+
+
+#
+# Loop through our Index files and search the contents of each.
+#
+for FILE in $(find ${INDEX_DIR} -type f)
+do
+	FILE2=$(echo ${FILE} | sed -e "s|${INDEX_DIR}||" -e "s|^/||" | index_filename_to_zip_filename)
+
+	#
+	# Search for the string in each file, and preprend the filename on any matches.
+	#
+	cat ${FILE} | grep "${SEARCH_STRING}" | sed -e "s|^|${FILE2}: |" 
+
+done
+
