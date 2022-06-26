@@ -3,8 +3,10 @@
 *.swp
 *~
 
+# Index
+indexed-files
+
 # Test files
 test-files/
-zip-indexes/
 
 

@@ -3,11 +3,10 @@
 #
 
 #
-# Set our Index directory to be under the top-level directory of this app.
-# Note that this file should have been included via a script that had pushd $(dirname $0) in it
-# so that we changed to the directory where these scripts live.
+# Main directory for our indexes
+# The directory under this one will be specific for what directory was indexed.
 #
-INDEX_DIR=${PWD}/zip-indexes
+INDEX_DIR=""
 
 #
 # Parse our command line arguments.
@@ -28,6 +27,13 @@ function parse_args() {
 		echo "! "
 		exit 1
 	fi
+
+	#
+	# Set our Index directory to be under the top-level directory of this app.
+	# Note that this file should have been included via a script that had pushd $(dirname $0) in it
+	# so that we changed to the directory where these scripts live.
+	#
+	INDEX_DIR=${PWD}/indexed-files/$(echo $SRC_DIR | sed -e "s|[^a-z0-9]|_|gi")
 
 } # End of parse_args()
 
