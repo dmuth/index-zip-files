@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# List all of our files that have been indexed from a particular directory
+#
+
+
+# Errors are fatal
+set -e 
+
+#
+# Change to the location of this script and load our library then go back to where we were.
+#
+pushd $(dirname $0) > /dev/null
+. ./lib/main.sh
+popd > /dev/null
+
+parse_args $@
+
+echo "# "
+echo "# Listing all files from ZIP files..."
+echo "# "
+echo "# Index Directory: ${INDEX_DIR}"
+echo "# "
+
+mkdir -p ${INDEX_DIR}
+
+#
+# Loop through our index files and dump the contents of each.
+#
+for FILE in $(find ${INDEX_DIR} -type f)
+do
+	FILE2=$(echo ${FILE} | sed -e "s|${INDEX_DIR}||" -e "s|^/||" | index_filename_to_zip_filename)
+	echo "# Dumping filenames from ${FILE2}..."
+	cat ${FILE}
+	echo
+
+done
+
