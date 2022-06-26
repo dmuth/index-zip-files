@@ -19,6 +19,7 @@ function parse_args() {
 	fi
 
 	SRC_DIR=$1
+	SRC_DIR=$(realpath ${SRC_DIR})
 
 	if test ! -d "${SRC_DIR}"
 	then
