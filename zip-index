@@ -39,7 +39,8 @@ for FILE in $(find ${SRC_DIR} -type f -name *.zip)
 do
 
 	TARGET=${INDEX_DIR}/$(echo ${FILE} | zip_filename_to_index_filename)
-	#echo ${TARGET} # Debugging
+	#echo "FILE: ${FILE}" # Debugging
+	#echo "TARGET: ${TARGET}" # Debugging
 	#echo ${FILE} | zip_filename_to_index_filename # Debugging
 
 	if test ${TARGET} -nt ${FILE}

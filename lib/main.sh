@@ -43,7 +43,9 @@ function parse_args() {
 	# Note that this file should have been included via a script that had pushd $(dirname $0) in it
 	# so that we changed to the directory where these scripts live.
 	#
-	INDEX_DIR=${PWD}/indexed-files/$(echo $SRC_DIR | sed -e "s|[^a-z0-9]|_|gi")
+	INDEX_DIR=${SRC_DIR}/indexed-files/$(echo $SRC_DIR | sed -e "s|[^a-z0-9]|_|gi")
+	#echo "SRC_DIR: $SRC_DIR" # Debuggin
+	#echo "INDEX_DIR: ${INDEX_DIR}" # Debugging
 
 } # End of parse_args()
 
@@ -89,7 +91,7 @@ function parse_args_search() {
 	# Note that this file should have been included via a script that had pushd $(dirname $0) in it
 	# so that we changed to the directory where these scripts live.
 	#
-	INDEX_DIR=${PWD}/indexed-files/$(echo $SRC_DIR | sed -e "s|[^a-z0-9]|_|gi")
+	INDEX_DIR=${SRC_DIR}/indexed-files/$(echo $SRC_DIR | sed -e "s|[^a-z0-9]|_|gi")
 
 	SEARCH_STRING=$2
 

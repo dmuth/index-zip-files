@@ -46,7 +46,7 @@ Once you paste those three alias lines in shell, typing `zip-index-dropbox` from
 ## Terminology
 
 - ZIP File: A compressed archive containing 1 or more files.
-- Index directory: A directory under `indexed-files/` which containes index files for a specific Source directory.
+- Index directory: A directory under `indexed-files/` in the directory you indexed, which containes index files for a specific Source directory.
 - Index file: A plaintext file containing filenames of a single ZIP file.
 
 
