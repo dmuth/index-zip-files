@@ -10,4 +10,6 @@ indexed-files
 test-files/
 test-files2
 
+# Steve Jobs
+.DS_Store
 
