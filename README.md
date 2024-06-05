@@ -35,9 +35,9 @@ Example:
 # Source Directory: /Users/doug/Dropbox
 # Alias Key: dropbox
 # 
-alias zip-index-dropbox="/Users/doug/development/index-zip-files/zip-index /Users/doug/Dropbox"
-alias zip-list-dropbox="/Users/doug/development/index-zip-files/zip-list /Users/doug/Dropbox"
-alias zip-search-dropbox="/Users/doug/development/index-zip-files/zip-search /Users/doug/Dropbox"
+alias zip-index-dropbox="$HOME/development/index-zip-files/zip-index $HOME/Dropbox"
+alias zip-list-dropbox="$HOME/development/index-zip-files/zip-list $HOME/Dropbox"
+alias zip-search-dropbox="$HOME/development/index-zip-files/zip-search $HOME/Dropbox"
 ```
 
 Once you paste those three alias lines in shell, typing `zip-index-dropbox` from any directory will index your Dropbox folder's ZIP files, and `zip-search-dropbox` can be used to search it.  And yes, aliases autocomplete in bash. :-)
